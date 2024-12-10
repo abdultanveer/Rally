@@ -23,10 +23,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.example.compose.rally.R
+import com.example.compose.rally.SingleAccount
 import com.example.compose.rally.data.UserData
 import com.example.compose.rally.ui.components.AccountRow
 import com.example.compose.rally.ui.components.StatementBody
+import androidx.navigation.NavHostController
+import com.example.compose.rally.navigateSingleTopTo
 
 /**
  * The Accounts screen.
@@ -64,6 +69,7 @@ fun AccountsScreen(
 fun SingleAccountScreen(
     accountType: String? = UserData.accounts.first().name
 ) {
+
     val account = remember(accountType) { UserData.getAccount(accountType) }
     StatementBody(
         items = listOf(account),
@@ -79,4 +85,8 @@ fun SingleAccountScreen(
             color = row.color
         )
     }
+}
+
+private fun NavHostController.navigateToSingleAccount(accountType: String) {
+    this.navigateSingleTopTo("${SingleAccount.route}/$accountType")
 }

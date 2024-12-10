@@ -50,6 +50,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.example.compose.rally.R
+import com.example.compose.rally.SingleAccount
 import com.example.compose.rally.data.UserData
 import com.example.compose.rally.ui.components.AccountRow
 import com.example.compose.rally.ui.components.BillRow
@@ -62,7 +63,7 @@ import java.util.Locale
 fun OverviewScreen(
     onClickSeeAllAccounts: () -> Unit = {},
     onClickSeeAllBills: () -> Unit = {},
-    onAccountClick: (String) -> Unit = {},
+    onAccountClick: (String) -> Unit = {}
 ) {
     Column(
         modifier = Modifier

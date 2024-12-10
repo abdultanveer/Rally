@@ -36,6 +36,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import androidx.navigation.navDeepLink
 import com.example.compose.rally.ui.accounts.AccountsScreen
 import com.example.compose.rally.ui.accounts.SingleAccountScreen
 import com.example.compose.rally.ui.bills.BillsScreen
@@ -57,7 +58,7 @@ class RallyActivity : ComponentActivity() {
     }
 }
 
-
+//adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
 fun NavHostController.navigateSingleTopTo(route: String) =
     this.navigate(route) {
         popUpTo(
@@ -118,8 +119,8 @@ fun RallyApp() {
                 }
                 composable(
                     route = SingleAccount.routeWithArgs,
-
-                    arguments = SingleAccount.arguments
+                    arguments = SingleAccount.arguments,
+                    deepLinks = SingleAccount.deepLinks
                 ) { navBackStackEntry ->
                     // Retrieve the passed argument
                     val accountType =
